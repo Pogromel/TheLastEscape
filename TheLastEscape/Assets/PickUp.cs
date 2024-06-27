@@ -38,15 +38,13 @@ public class PickUp : MonoBehaviour, IInteractSystem
 
     public void Interact(InteractionSys player)
     {
-        if(playerHeldItem.holdItem(gameObject))
+        if (playerHeldItem.holdItem(gameObject))
         {
-            ObjectManagement.Instance.detachObject(gameObject);
-            rb.isKinematic = true;
-            rb.useGravity = false;
-            gameObject.layer = LayerMask.NameToLayer("HeldItems");
-            transform.localPosition = new Vector3(1f, 0.5f, 0f);
-            transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            Debug.Log("Item interacted and handled by PlayerHeldItem.");
+        }
+        else
+        {
+            Debug.Log("Failed to handle item.");
         }
     }
 }
-
